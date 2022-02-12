@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
@@ -51,14 +52,14 @@ double pop(LL* stack){
     LLNode *tempNode = stack->root; //store the retured element
     LLNode *prevousNode;
     if(stack->root != NULL){ // MAKE AN ACUTAL GUARD!
-    while(tempNode->child != NULL){
-        prevousNode = tempNode; //need to keep track of the second to last node in order to update it's child to null
-        tempNode = tempNode->child;
-    }
-    double val = tempNode->val;
-    prevousNode->child = NULL;
-    free(tempNode);
+        while(tempNode->child != NULL){
+            prevousNode = tempNode; //need to keep track of the second to last node in order to update it's child to null
+            tempNode = tempNode->child;
+        }
+        double val = tempNode->val;
+        prevousNode->child = NULL;
+        free(tempNode);
     return val;
     }
-    return 999999;
+    return NAN;
 }

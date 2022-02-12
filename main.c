@@ -24,33 +24,24 @@ int main()
 
 	
 
-	do{
+	while(resp[0] != 'n'){
 		printf("Enter an equation (in RPN):\n"); //intro statment
-
 		fgets(eqn, MAX_EQ_LEN,stdin); // prompt for input
 		
-		//evaluate(eqn);
+		evaluate(eqn); //call to evaluate
+		
 		
 		printf("Evaluate another? (y/n): y\n"); //prompt for repeat
 		fgets(resp,MAX_EQ_LEN,stdin); 
-		printf("The input is: %c",resp[0]);
 
-		if(resp[0] != 'y' || resp[0] != 'n'){
+		if(resp[0] != 'y' && resp[0] != 'n'){
+			while(resp[0] != 'y' || resp[0] != 'n'){
 			printf("Sorry, could not parse \nEvaluate another? (y/n): y\n");
 			fgets(resp,MAX_EQ_LEN,stdin);
-			printf("The input is: %c",resp[0]);
 			printf("\n");
-		}else{
-			printf("what the fuck!");
+			}
 		}
-		printf("\nThe input is: %c",resp[0]);
-
-	}while(resp[0] != 'n');
-
-	printf("I want to break free!");
-	
-
-
+	}
 
 	// /* TODO */
 
@@ -79,9 +70,6 @@ int main()
 	// printf("Elements in stack new!: %d", size(stack));
 	// printf("\n"); //add after--^
 
-
-
-
-	// printf("Exiting...\n");
+	printf("Exiting...\n");
 	return 0;
 }
