@@ -14,7 +14,6 @@
 typedef struct LLNode
 {
     double val;
-    //struct LLNode *parent; I don't think this needs to be a doublely linked list afterall.
     struct LLNode *child;
 } LLNode;
 
@@ -23,14 +22,13 @@ typedef struct LLNode
  */
 typedef struct LL
 {
-    LLNode *root;
+    LLNode *topOfStack;
+    int stackSize;
 }LL;
 
 //function declarations
-int size(LL *stack);
+int size();
 void insert(LL *stack, double value);
 double pop();
 void printStack(LL *stack);
-
-
 #endif /* STACK_H_ */
