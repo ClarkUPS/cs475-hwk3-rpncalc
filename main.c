@@ -25,19 +25,19 @@ int main()
 	
 
 	while(resp[0] != 'n'){
-		resp[0] = '\0'; //RESET?
+		//resp[0] = '\0'; //RESET?
 		printf("Enter an equation (in RPN):\n"); //intro statment
 		fgets(eqn, MAX_EQ_LEN,stdin); // prompt for input
 		
 		evaluate(eqn); //call to evaluate
-		eqn[0] = '\n'; //RESET?
+		//eqn[0] = '\n'; //RESET?
 		
 		
 		printf("Evaluate another? (y/n): y\n"); //prompt for repeat
 		fgets(resp,MAX_EQ_LEN,stdin); 
 
 		if(resp[0] != 'y' && resp[0] != 'n'){
-			while(resp[0] != 'y' || resp[0] != 'n'){
+			while(resp[0] != 'y' && resp[0] != 'n'){
 				printf("Sorry, could not parse \nEvaluate another? (y/n): y\n");
 				fgets(resp,MAX_EQ_LEN,stdin);
 				printf("\n");

@@ -74,9 +74,9 @@ void evaluate(char str[]){
     printf("\nfinal size = %d", size());
     printf("The final output is: %f", finalAnswer);
     }
+    printStack(stack);
     free(stack); //Free the stack at the end?
 }
-
 
 //SELFNOTE: ERROR Occurs on second call
 

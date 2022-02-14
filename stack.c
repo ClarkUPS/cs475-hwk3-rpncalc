@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
+#include <sys/wait.h>
 
 int stackSize = 0;
 
@@ -33,8 +34,10 @@ int size(){
 void printStack(LL *stack){
     LLNode *tempNode = stack->topOfStack;
         printf("\nStack Contents:\n***************\n");
-    while (tempNode != NULL){
+    int i;
+    for(i = 0; i < size(); i++){
         printf("%f\n",tempNode->val);
+        //char temp[128];
         tempNode = tempNode->child; 
     }
     printf("***************\n");
