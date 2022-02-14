@@ -6,15 +6,13 @@
 #include "stack.h"
 #include "polish.h"
 
-
-
 void evaluate(char str[]){
     LL *stack =(LL *)malloc(sizeof(LL));
 
     char *tokin = strtok(str," ");
         while(tokin != NULL){
 
-             //filter out puntuation
+           //filter out puntuation
            // printf("\nBefore: %f", *tokin);
             int opis = ispunct(*tokin);
             //printf("\nAfter: %f", *tokin);
@@ -47,7 +45,7 @@ void evaluate(char str[]){
                         aftOpp = (num2 * num1);
                     }else if(*tokin == '/'){
                        //check for / 0 error!
-                        if(num2 != 0){   
+                        if(num1 != 0){   
                            aftOpp = (num2 / num1);
                         }else{
                             printf("\nERROR: sorry, cannot evaluate expression. Devide by zero error.\n");
@@ -59,116 +57,28 @@ void evaluate(char str[]){
 
 
                       printf("\nAfter opp: %f", aftOpp);  
-
+                    
+                    insert(stack,aftOpp); //add the value back to the stack
                 }
-
-
-
 
         printf("\nTokin: %c", *tokin);
         printf("\n");
         tokin = strtok(NULL, " "); //next input value!
     }
+
+    //Check to make sure the equation was evaluated correctly
+    if(size() > 1){
+        printf("ERROR: sorry not enough operators, could not evaluate");
+    }else{
+    double finalAnswer = pop(stack);
+    printf("\nfinal size = %d", size());
+    printf("The final output is: %f", finalAnswer);
+    }
+    free(stack); //Free the stack at the end?
 }
 
-// void evaluate(char str[]){
-//     //create stack base!
-//     LL *stack =(LL *)malloc(sizeof(LL));
-    
-//     //first split call
-//     char *tokin = strtok(str," ");
-//         while(tokin != NULL){
-            
-//         int opis = ispunct(*tokin);
-//         printf("%d", opis);
-//             if(opis != 0){
-//                  printf("\nis punct\n");
-                    
-                    
-//                     int stacksize = size(stack);//remve
-//                     printf("%dSTACK", stacksize);//remove
 
-
-//                 if(size(stack) >= 2){
-//                     printf("good to add");
-                    
-//                 }else{
-//                     printf("\nsorry syntax error.\n");
-//                     break;
-//                 }
+//SELFNOTE: ERROR Occurs on second call
 
 
 
-//             }else{
-//                 //add the double to the stack!
-//                 printf("\nis a number!");
-//                 double val = atof(tokin);
-//                 insert(stack, val);
-//             }
-            
-//         //Next Tokin
-//         printf("\nTokin: %c", *tokin);
-//         printf("\n");
-//         tokin = strtok(NULL, " "); //next input value!
-//     }
-//     //final after output
-//     printStack(stack);
-//     double final = pop(stack);
-//     printf("Final Output = %f",final);
-    
-// }
-
-
-///////////////////////////////////////////////////////////////////
-// while(tokin != NULL){
-        
-
-//         int isOpp = ispunct(*tokin);
-//          if(isOpp != 0){
-//              printf("is punc!");
-            
-//             //CHECK: Make sure the opperators are valid 
-//             if(*tokin == '+' || *tokin == '-' || *tokin == '*' || *tokin == '/' ){
-//                 //CHECK: Make sure the opperaion can work
-//                 if(size(stack) >= 2){
-                    
-//                     //opperations
-//                     double n1 = pop(stack);
-//                     double n2 = pop(stack);
-//                     double sol;
-
-//                     if(*tokin == '+'){
-//                         sol = n2 - n1; 
-//                     }else if(*tokin == '-'){
-//                         sol = n2 - n1;
-//                     }else if(*tokin == '*'){
-//                         sol = n2 * n1;
-//                     }else{
-//                         //CHECK devide by zero error
-//                         if(n1 != 0){
-//                             sol = n2 /n1;
-//                         }else{
-//                             printf("\nsorry devide by zero error. Please try again\n");
-//                             break;
-//                         }
-//                     }
-//                      insert(stack,sol); //Push sol back onto the stack
-                     
-//                 }else{
-//                     printf("\nSorry, incorrect syntax. Please try again\n");
-//                     break;
-//                 }
-//             }else{
-                
-//                 printf("\nSorry, not a valid opperation. Please try again\n");
-//                 break;
-//             }
-//         }else{ //it needs to be a double and thus poped onto the stack 
-//             double val = atof(tokin);
-//             insert(stack, val);
-//             //printf("%f", val);
-            
-    
-        
-//         }
-//         printf("%s\n", tokin);

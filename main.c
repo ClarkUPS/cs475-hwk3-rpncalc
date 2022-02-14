@@ -25,10 +25,12 @@ int main()
 	
 
 	while(resp[0] != 'n'){
+		resp[0] = '\0';
 		printf("Enter an equation (in RPN):\n"); //intro statment
 		fgets(eqn, MAX_EQ_LEN,stdin); // prompt for input
 		
 		evaluate(eqn); //call to evaluate
+		eqn[0] = '\n';
 		printf("here!");
 		
 		printf("Evaluate another? (y/n): y\n"); //prompt for repeat
