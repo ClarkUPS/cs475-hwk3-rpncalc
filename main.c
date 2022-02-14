@@ -19,12 +19,13 @@
 
 int main()
 {
+	
+
 	char eqn[MAX_EQ_LEN];	 // string to store the input RPN expression
 	char resp[MAX_EQ_LEN]; // string to store the user's response "y" or "n"
 
-	
-
 	while(resp[0] != 'n'){
+		
 		resp[0] = '\0'; //RESET?
 		printf("Enter an equation (in RPN):\n"); //intro statment
 		fgets(eqn, MAX_EQ_LEN,stdin); // prompt for input
@@ -44,6 +45,12 @@ int main()
 			}
 		}
 	}
+
+	char test[8] = "5 5 *";
+	evaluate(test);
+
+
+	
 
 	// /* TODO */
 
